@@ -1,4 +1,4 @@
-package net.joastbg.sampleapp.entities;
+package net.joastbg.sampleapp.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -6,24 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import net.joastbg.sampleapp.entities.Disk;
+
 @Service
 @Transactional
-public class BookDao {
-	
+public class DiskDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
-	public Long persist(Book book){
+
+	public Long persist(Disk disk){
 		Session session = sessionFactory.getCurrentSession();
-		Long returnID = (Long) session.save(book);
+		Long returnID = (Long) session.save(disk);
 		return returnID;
 	}
-	
-	public Book find(Long id){
-		Session session = sessionFactory.getCurrentSession();
-		return (Book) session.load(Book.class, id);
-	}
 
-	
+	public Disk find(Long id){
+		Session session = sessionFactory.getCurrentSession();
+		return (Disk) session.load(Disk.class, id);
+	}
 }

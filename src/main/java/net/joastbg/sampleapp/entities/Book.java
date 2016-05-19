@@ -1,38 +1,53 @@
 package net.joastbg.sampleapp.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import org.joda.time.DateTime;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 /**
  * Describes a Book
  * 
- * @author Johan Astborg <joastbg@gmail.com>
+ * @author Charlotte Cavalier <charlotte.cavalier@gmail.com>
  */
 @Entity
+@SequenceGenerator(name = "article_seq")
 @Table(name="BOOK")
-public class Book implements Serializable {
+public class Book extends Article implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7615624242713702030L;
 
-	@Column
 	private String title;
-	
-	@Column
+
 	private String ISBN;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "WROTE_BY_AUTHOR_BOOK", joinColumns = {
+			@JoinColumn(name = "idBook", nullable = false, updatable = false) },
+			inverseJoinColumns = { @JoinColumn(name = "idAuthor",
+					nullable = false, updatable = false) })
+	private Set<Person> authors;
+
+	public Book() {
+		super();
+	}
 	
-	@Column
-	private String summary;
-
-	@Column
-	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
-	private DateTime published;
-
 	public Book(String title) throws IllegalArgumentException {
+		super();
 		if (title == null || title.isEmpty()) {
 			throw new IllegalArgumentException("Title must not be empty");
 		}
@@ -55,53 +70,6 @@ public class Book implements Serializable {
 		this.ISBN = ISBN;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * 
-	 * @param id
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public DateTime getPublished() {
-		return published;
-	}
-
-	/**
-	 * 
-	 * @param published
-	 */
-	public void setPublished(DateTime published) {
-		this.published = published;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getSummary() {
-		return summary;
-	}
-
-	/**
-	 * 
-	 * @param summary
-	 */
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
 
 	/**
 	 * 
@@ -117,5 +85,13 @@ public class Book implements Serializable {
 	 */
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public Set<Person> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(Set<Person> persons) {
+		this.authors = persons;
 	}
 }
