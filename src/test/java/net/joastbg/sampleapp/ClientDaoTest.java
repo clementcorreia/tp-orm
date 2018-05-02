@@ -34,14 +34,6 @@ public class ClientDaoTest {
         Assert.assertTrue(true);
     }
 
-    @Test
-    public void testFindAll(){
-        List<Client> allClients = clientDao.findAll();
-        Client client = allClients.get(0);
-        Assert.assertEquals(1,client.getContrats().size());
-        Assurance contrat = client.getContrats().get(0);
-        Assert.assertEquals("Auto", contrat.getType());
-        Assert.assertEquals(client, contrat.getSouscripteurs().get(0));
-    }
+
 
 }
