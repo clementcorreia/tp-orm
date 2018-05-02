@@ -1,9 +1,12 @@
 package net.joastbg.sampleapp.entities;
 
 
+import org.hibernate.annotations.ForeignKey;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -11,6 +14,23 @@ import java.util.Set;
 @SequenceGenerator(name = "client_seq")
 @Table(name="CLIENT")
 public class Client implements Serializable {
+
+    @ManyToMany
+    @JoinTable(
+            name="CLIENT_ASSURANCE",
+            joinColumns=@JoinColumn(name="idClient"),
+            inverseJoinColumns=@JoinColumn(name="idAssurance")
+    )
+    private List<Assurance> contrats;
+    public List<Assurance> getContrats() {
+        return contrats;
+    }
+
+    public void setContrats(List<Assurance> contrats) {
+        this.contrats = contrats;
+    }
+
+
 
 
     @Override
@@ -38,10 +58,20 @@ public class Client implements Serializable {
             sequenceName="client_sequence"
     )
     private Long idClient;
+    @Column(name = "nom")
     private String name;
     private Date dateAdhesion;
 
-    @ManyToMany
+
+    public Set<CompteBancaire> getComptesBancaires() {
+        return comptesBancaires;
+    }
+
+    public void setComptesBancaires(Set<CompteBancaire> comptesBancaires) {
+        this.comptesBancaires = comptesBancaires;
+    }
+
+    @OneToMany
     @JoinTable(
             name = "COMPTE_CLIENT",
             joinColumns = {@JoinColumn(name = "idClient")},
@@ -88,3 +118,6 @@ public class Client implements Serializable {
 
 
 }
+
+
+

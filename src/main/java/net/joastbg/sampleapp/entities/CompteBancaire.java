@@ -1,10 +1,8 @@
 package net.joastbg.sampleapp.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="COMPTE_BANCAIRE")
@@ -30,4 +28,24 @@ public class CompteBancaire {
     private String iban;
 
     private String proprietaire;
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name="COMPTE_CLIENT",
+            joinColumns = @JoinColumn( name="iban"),
+            inverseJoinColumns = @JoinColumn( name="idClient")
+    )
+
+    private List<Client> utilisateurs;
+
+    public List<Client> getUtilisateurs() {
+        return utilisateurs;
+    }
+
+    public void setUtilisateurs(List<Client> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
+
+
+
 }
