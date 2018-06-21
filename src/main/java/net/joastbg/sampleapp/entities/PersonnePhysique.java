@@ -1,19 +1,23 @@
 package net.joastbg.sampleapp.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "PERSONNE_PHYSIQUE")
+@PrimaryKeyJoinColumn(name = "idClient")
 public class PersonnePhysique extends Client {
+
+    @OneToOne
+    @JoinColumn(name = "idClient")
+    private Client client;
 
     @Column
     private String prenom;
 
     @Column
-    private LocalDate dateNaissance;
+    private Date dateNaissance;
 
     public String getPrenom() {
         return prenom;
@@ -23,11 +27,11 @@ public class PersonnePhysique extends Client {
         this.prenom = prenom;
     }
 
-    public LocalDate getDateNaissance() {
+    public Date getDateNaissance() {
         return dateNaissance;
     }
 
-    public void setDateNaissance(LocalDate dateNaissance) {
+    public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 }
