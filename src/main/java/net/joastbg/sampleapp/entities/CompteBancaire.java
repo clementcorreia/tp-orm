@@ -9,11 +9,15 @@ public class CompteBancaire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idCompte")
+    @Column(name="idCompteBancaire")
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name="idClient")
+    @ManyToOne
+    @JoinTable(
+            name = "COMPTE_CLIENT",
+            joinColumns = {@JoinColumn(name = "idClient")},
+            inverseJoinColumns = {@JoinColumn(name = "idClient")}
+    )
     private Client client;
 
     @Column
