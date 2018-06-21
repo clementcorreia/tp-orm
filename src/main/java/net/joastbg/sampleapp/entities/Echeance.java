@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "COMPTE_BANCAIRE")
-public class Echeances {
+@Table(name = "ECHEANCE")
+public class Echeance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
