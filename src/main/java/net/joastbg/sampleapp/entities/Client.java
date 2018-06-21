@@ -5,11 +5,6 @@ import org.hibernate.annotations.Entity;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Describes an Person
- *
- * @author Charlotte Cavalier <charlotte.cavalier@gmail.com>
- */
 @Entity
 @SequenceGenerator(name = "seq", initialValue = 1)
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -24,7 +19,7 @@ public abstract class Client {
     private String nom;
 
     @Column(name = "comptePrincipal")
-    private String comptePrincipal;
+    private int comptePrincipal;
 
     @OneToMany
     @JoinTable(
