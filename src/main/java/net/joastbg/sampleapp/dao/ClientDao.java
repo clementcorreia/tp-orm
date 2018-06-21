@@ -1,7 +1,6 @@
 package net.joastbg.sampleapp.dao;
 
 import net.joastbg.sampleapp.entities.Client;
-import net.joastbg.sampleapp.entities.PersonneMorale;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
