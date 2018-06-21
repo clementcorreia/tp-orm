@@ -31,6 +31,7 @@ public class ClientDaoTest {
 
     @Test
     public void testPersist(){
+
         Assert.assertTrue(true);
     }
 
