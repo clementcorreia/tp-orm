@@ -21,7 +21,7 @@ public abstract class Client {
     @Column(name = "comptePrincipal")
     private int comptePrincipal;
 
-    @OneToMany
+    @OneToMany(mappedBy = "client")
     @JoinTable(
             name = "COMPTE_CLIENT",
             joinColumns = {@JoinColumn(name = "idClient")},
