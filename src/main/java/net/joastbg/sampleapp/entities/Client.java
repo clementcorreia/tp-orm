@@ -23,9 +23,9 @@ public abstract class Client {
     private CompteBancaire comptePrincipal;
 
     @OneToMany(mappedBy = "client")
-    private List<CompteBancaire> compteBancaireList;
+    private List<CompteBancaire> comptesBancaires;
 
-    public Client() {
-
-    }
+    @OneToMany(mappedBy = "client")
+    private List<Assurance> assurances;
+    
 }

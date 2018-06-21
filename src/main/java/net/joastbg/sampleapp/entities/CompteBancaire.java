@@ -52,4 +52,13 @@ public class CompteBancaire {
     public void setBic(String bic) {
         this.bic = bic;
     }
+
+    public String getSwiftCode() {
+        return swiftCode;
+    }
+
+    public void setSwiftCode(String swiftCode) {
+        this.swiftCode = swiftCode;
+    }
+
 }
