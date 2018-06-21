@@ -1,4 +1,4 @@
 package net.joastbg.sampleapp.entities;
 
-public class AssuranceHabitat {
+public class AssuranceHabitation {
 }
