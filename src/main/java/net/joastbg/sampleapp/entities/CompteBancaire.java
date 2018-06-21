@@ -16,13 +16,13 @@ public class CompteBancaire {
     @JoinColumn(name = "idClient")
     private Client client;
 
-    @Column
+    @Column(name="iban")
     private String iban;
 
     @Column(name="BIC")
     private String bic;
 
-    @Column
+    @Column(name="swiftCode")
     private String swiftCode;
 
     public Long getId() {
@@ -51,5 +51,17 @@ public class CompteBancaire {
 
     public void setBic(String bic) {
         this.bic = bic;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSwiftCode() {
+        return swiftCode;
+    }
+
+    public void setSwiftCode(String swiftCode) {
+        this.swiftCode = swiftCode;
     }
 }
