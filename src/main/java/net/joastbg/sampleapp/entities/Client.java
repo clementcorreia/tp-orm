@@ -18,15 +18,11 @@ public abstract class Client {
     @Column(name = "nom")
     private String nom;
 
-    @Column(name = "comptePrincipal")
-    private int comptePrincipal;
+    @OneToOne
+    @JoinColumn(name = "comptePrincipal")
+    private CompteBancaire comptePrincipal;
 
     @OneToMany(mappedBy = "client")
-    @JoinTable(
-            name = "COMPTE_CLIENT",
-            joinColumns = {@JoinColumn(name = "idClient")},
-            inverseJoinColumns = {@JoinColumn(name = "idClient")}
-    )
     private List<CompteBancaire> compteBancaireList;
 
     public Client() {

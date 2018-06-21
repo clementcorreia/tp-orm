@@ -13,11 +13,7 @@ public class CompteBancaire {
     private Long id;
 
     @ManyToOne
-    @JoinTable(
-            name = "COMPTE_CLIENT",
-            joinColumns = {@JoinColumn(name = "idClient")},
-            inverseJoinColumns = {@JoinColumn(name = "idClient")}
-    )
+    @JoinColumn(name = "idClient")
     private Client client;
 
     @Column
@@ -25,6 +21,9 @@ public class CompteBancaire {
 
     @Column(name="BIC")
     private String bic;
+
+    @Column
+    private String swiftCode;
 
     public Long getId() {
         return id;
