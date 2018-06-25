@@ -27,5 +27,5 @@ public abstract class Client {
 
     @OneToMany(mappedBy = "client")
     private List<Assurance> assurances;
-    
+
 }
