@@ -7,6 +7,7 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name = "idClient")
 public class PersonneMorale extends Client {
 
+    @Id
     @OneToOne
     @JoinColumn(name = "idClient")
     private Client client;
