@@ -3,19 +3,19 @@ package net.joastbg.sampleapp.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="CONTACT")
+@Table(name = "CONTACT")
 public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idContact")
+    @Column(name = "idContact")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="fk_type")
+    @JoinColumn(name = "typeContact")
     private TypeContact type;
 
-    @Column(name="valeurContact")
+    @Column(name = "valeurContact")
     private String valeur;
 
     @Column(name="typeContact")

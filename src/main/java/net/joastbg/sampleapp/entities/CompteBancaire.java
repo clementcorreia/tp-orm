@@ -25,6 +25,10 @@ public class CompteBancaire {
     @Column(name="swiftCode")
     private String swiftCode;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
@@ -51,10 +55,6 @@ public class CompteBancaire {
 
     public void setBic(String bic) {
         this.bic = bic;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getSwiftCode() {

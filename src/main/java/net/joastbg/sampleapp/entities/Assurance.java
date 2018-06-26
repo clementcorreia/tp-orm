@@ -30,7 +30,12 @@ public abstract class Assurance {
     private Date datePrelevement;
 
     @OneToMany(mappedBy = "assurance")
-    private List<Echeance> echeance;
+
+    private List<Echeance> echeances;
+
+    @ManyToOne
+    @JoinColumn(name = "idClient")
+    private Client client;
 
     public Assurance() {
 
