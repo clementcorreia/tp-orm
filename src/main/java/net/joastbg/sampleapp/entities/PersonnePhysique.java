@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @PrimaryKeyJoinColumn(name = "idClient")
 public class PersonnePhysique extends Client {
 
+    @Id
     @OneToOne
     @JoinColumn(name = "idClient")
     private Client client;

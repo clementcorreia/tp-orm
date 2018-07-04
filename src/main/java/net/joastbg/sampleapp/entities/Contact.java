@@ -18,6 +18,9 @@ public class Contact {
     @Column(name = "valeurContact")
     private String valeur;
 
+    @Column(name="typeContact")
+    private String typeContact;
+
     public Long getId() {
         return id;
     }

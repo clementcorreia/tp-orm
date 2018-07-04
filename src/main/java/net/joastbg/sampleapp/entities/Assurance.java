@@ -30,6 +30,7 @@ public abstract class Assurance {
     private Date datePrelevement;
 
     @OneToMany(mappedBy = "assurance")
+
     private List<Echeance> echeances;
 
     @ManyToOne
