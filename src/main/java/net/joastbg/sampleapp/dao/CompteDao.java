@@ -1,6 +1,5 @@
 package net.joastbg.sampleapp.dao;
 
-import net.joastbg.sampleapp.entities.Client;
 import net.joastbg.sampleapp.entities.CompteBancaire;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,10 +21,14 @@ public class CompteDao {
         return returnID;
     }
 
+    public CompteBancaire find(Long id){
+        Session session = sessionFactory.getCurrentSession();
+        return (CompteBancaire) session.load(CompteBancaire.class, id);
+    }
 
-    public CompteBancaire find(String iban){
-        Session session= sessionFactory.getCurrentSession();
-        return (CompteBancaire) session.load(CompteBancaire.class, iban);
+    public CompteBancaire findByIban(String iban) {
+        Session session = sessionFactory.getCurrentSession();
+        return (CompteBancaire) session.createQuery("FROM COMPTE_BANCAIRE WHERE IBAN = :iban").setString("iban", iban).uniqueResult();
     }
 
     public void delete(CompteBancaire compteBancaire){

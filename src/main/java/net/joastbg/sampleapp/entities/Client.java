@@ -28,4 +28,43 @@ public abstract class Client {
     @OneToMany(mappedBy = "client")
     private List<Assurance> assurances;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public CompteBancaire getComptePrincipal() {
+        return comptePrincipal;
+    }
+
+    public void setComptePrincipal(CompteBancaire comptePrincipal) {
+        this.comptePrincipal = comptePrincipal;
+    }
+
+    public List<CompteBancaire> getComptesBancaires() {
+        return comptesBancaires;
+    }
+
+    public void setComptesBancaires(List<CompteBancaire> comptesBancaires) {
+        this.comptesBancaires = comptesBancaires;
+    }
+
+    public List<Assurance> getAssurances() {
+        return assurances;
+    }
+
+    public void setAssurances(List<Assurance> assurances) {
+        this.assurances = assurances;
+    }
 }

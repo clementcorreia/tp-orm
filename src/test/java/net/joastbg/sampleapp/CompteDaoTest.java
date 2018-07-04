@@ -4,11 +4,14 @@ package net.joastbg.sampleapp;
 import junit.framework.Assert;
 import net.joastbg.sampleapp.dao.ClientDao;
 import net.joastbg.sampleapp.dao.CompteDao;
+import net.joastbg.sampleapp.entities.Client;
 import net.joastbg.sampleapp.entities.CompteBancaire;
+import net.joastbg.sampleapp.entities.PersonneMorale;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -30,6 +33,14 @@ public class CompteDaoTest {
     public void setUp() {
         compte = new CompteBancaire();
         compte.setIban("FR7612548029980000000150086");
+        PersonneMorale c = new PersonneMorale();
+        c.setSiren("aaaaaaaaaa");
+        c.setNom("Test");
+        ClientDao clientDAO = new ClientDao();
+        clientDAO.persist(c);
+        compte.setClient(c);
+        compte.setBic("aaaa");
+        compte.setSwiftCode("aaa");
         //compte.setProprietaire("Cathy Catou");
     }
 
@@ -42,7 +53,7 @@ public class CompteDaoTest {
 
     @Test
     public void testFind(){
-        String id = compteDao.persist(compte);
+        Long id = Long.valueOf(compteDao.persist(compte));
         CompteBancaire compteFound = compteDao.find(id);
         Assert.assertNotNull(compteFound);
         Assert.assertEquals(compte,compteFound);
