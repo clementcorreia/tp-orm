@@ -20,17 +20,17 @@ public class ClientDaoDatabase implements ClientDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    public Long persist(Client client){
+    public Long persist(PersonneMorale client){
         Session session = sessionFactory.getCurrentSession();
         Long returnID = (Long) session.save(client);
         return returnID;
     }
 
-    public Client find(Long idPersonneMorale) {
+    public PersonneMorale find(Long idPersonneMorale) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("SELECT * FROM Client WHERE idClient=?");
-        query.setLong(1, idPersonneMorale);
-        return (Client) query.uniqueResult();
+        Query query = session.createQuery("FROM PersonneMorale WHERE idClient=:idclient");
+        query.setLong("idclient", idPersonneMorale);
+        return (PersonneMorale) query.uniqueResult();
     }
 
     @Override

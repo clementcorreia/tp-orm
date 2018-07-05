@@ -8,10 +8,6 @@ import java.time.LocalDate;
 @Table(name = "PERSONNE_PHYSIQUE")
 public class PersonnePhysique extends Client {
 
-    @Id
-    public Long getId() {
-        return super.getId();
-    }
 
     @Column
     private String prenom;

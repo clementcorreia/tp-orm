@@ -25,9 +25,9 @@ public class Echeance implements Serializable {
     @Column
     private Date dateEmissionFacture;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "idAssurance")
-    private Assurance assurance;
+    private Assurance assurance;*/
 
     public Long getId() {
         return id;
@@ -69,13 +69,13 @@ public class Echeance implements Serializable {
         this.dateEmissionFacture = dateEmissionFacture;
     }
 
-    public Assurance getAssurance() {
+  /*  public Assurance getAssurance() {
         return assurance;
     }
 
     public void setAssurance(Assurance assurance) {
         this.assurance = assurance;
-    }
+    }*/
 
     public String toString() {
         return this.datePaiement + " : " + this.prix + "€";

@@ -6,10 +6,6 @@ import javax.persistence.*;
 @Table(name = "PERSONNE_MORALE")
 public class PersonneMorale extends Client {
 
-    @Id
-    public Long getId() {
-        return super.getId();
-    }
 
     @Column
     private String siren;
