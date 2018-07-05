@@ -6,7 +6,7 @@ INSERT INTO COMPTE_BANCAIRE (idClient, iban, BIC, swiftCode) VALUES((SELECT idCl
 INSERT INTO COMPTE_BANCAIRE (idClient, iban, BIC, swiftCode) VALUES((SELECT idClient FROM CLIENT WHERE nom='toto cathou'), 'FR7630004000031234567890143','toto', 'BOUSFRPP');
 INSERT INTO COMPTE_BANCAIRE (idClient, iban, BIC, swiftCode) VALUES((SELECT idClient FROM CLIENT WHERE nom='testou testal'), 'FR7630006000011234567890189','toto', 'HSBCFRPP');
 
-INSERT INTO ASSURANCE (numero, dateSouscription, dateAnniversaire, datePrelevement) VALUES ((SELECT idClient FROM CLIENT WHERE nom='cathy cathou'), '014UIA38P38', '2018-03-24', '2019-03-24', '2018-07-15');
+INSERT INTO ASSURANCE (idClient, numero, dateSouscription, dateAnniversaire, datePrelevement) VALUES ((SELECT idClient FROM CLIENT WHERE nom='cathy cathou'), '014UIA38P38', '2018-03-24', '2019-03-24', '2018-07-15');
 INSERT INTO ASSURANCE (numero, dateSouscription, dateAnniversaire, datePrelevement) VALUES ('01AIR938J90', '2017-06-24', '2018-06-24', '2018-07-01');
 
 INSERT INTO CLIENT_ASSURANCE(idClient, idAssurance)
