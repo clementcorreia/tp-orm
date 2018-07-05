@@ -6,7 +6,6 @@
 
 <!--				<bean id="searchIndexer" class="org.hibernate.search.event.impl.FullTextIndexEventListener.Installation" />-->
 
-    <import resource="../database/DataSource.xml"/>
 				<!-- Hibernate session factory -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 								

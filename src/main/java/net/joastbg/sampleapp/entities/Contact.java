@@ -18,8 +18,13 @@ public class Contact {
     @Column(name = "valeurContact")
     private String valeur;
 
-    @Column(name="typeContact")
-    private String typeContact;
+    @ManyToOne
+    @JoinColumn(name = "idClient")
+    private Client client;
+
+    @ManyToOne
+    @JoinColumn(name = "idConducteurSecondaire")
+    private ConducteurSecondaire conducteurSecondaire;
 
     public Long getId() {
         return id;

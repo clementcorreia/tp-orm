@@ -28,6 +28,9 @@ public abstract class Client {
     @OneToMany(mappedBy = "client")
     private List<Assurance> assurances;
 
+    @OneToMany(mappedBy = "client")
+    private List<Contact> contacts;
+
     public Long getId() {
         return id;
     }
@@ -60,11 +63,51 @@ public abstract class Client {
         this.comptesBancaires = comptesBancaires;
     }
 
+    public void addCompteBancaire(CompteBancaire cb) {
+        this.comptesBancaires.add(cb);
+    }
+
     public List<Assurance> getAssurances() {
         return assurances;
     }
 
     public void setAssurances(List<Assurance> assurances) {
         this.assurances = assurances;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public void addContact(Contact contact) {
+        this.contacts.add(contact);
+    }
+
+    public void removeContact(Contact contact) {
+        this.contacts.remove(contact);
+    }
+
+    public void addAssurance(Assurance assurance) {
+        this.assurances.add(assurance);
+    }
+
+    public void removeAssurance(Assurance assurance) {
+        this.assurances.remove(assurance);
+    }
+
+    public void updateAssurance(Assurance base, Assurance updated) {
+        int index = assurances.size();
+        for(int i=0; i < assurances.size(); i++) {
+            Assurance a = assurances.get(i);
+            if(a.equals(base)) {
+                index = i;
+                break;
+            }
+        }
+        this.assurances.set(index, updated);
     }
 }

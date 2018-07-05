@@ -4,6 +4,8 @@ package net.joastbg.sampleapp.entities;
 import org.hibernate.annotations.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "ASSURANCE_AUTO")
@@ -19,6 +21,13 @@ public class AssuranceAuto extends Assurance {
 
     @Column
     private int bonusMalus;
+
+    @OneToMany(mappedBy = "assurance")
+    private List<ConducteurSecondaire> conducteursSecondaires;
+
+    public AssuranceAuto() {
+        this.conducteursSecondaires = new ArrayList<>();
+    }
 
     public Assurance getAssurance() {
         return assurance;
@@ -44,4 +53,19 @@ public class AssuranceAuto extends Assurance {
         this.bonusMalus = bonusMalus;
     }
 
+    public List<ConducteurSecondaire> getConducteursSecondaires() {
+        return conducteursSecondaires;
+    }
+
+    public void setConducteursSecondaires(List<ConducteurSecondaire> conducteursSecondaires) {
+        this.conducteursSecondaires = conducteursSecondaires;
+    }
+
+    public void addConducteurSecondaire(ConducteurSecondaire conducteurSecondaire) {
+        this.conducteursSecondaires.add(conducteurSecondaire);
+    }
+
+    public void removeConducteurSecondaire(ConducteurSecondaire conducteurSecondaire) {
+        this.conducteursSecondaires.remove(conducteurSecondaire);
+    }
 }
