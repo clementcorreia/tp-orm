@@ -60,13 +60,13 @@ public class QuestionsTest {
         System.out.println("Test : Ajout d'un client de type PersonnePhysique");
         PersonnePhysique pp = new PersonnePhysique();
         pp.setNom("Blabla");
-        clientDaoInMemory.persist(pp);
-        clientDaoDatabase.persist(pp);
+        clientDaoInMemory.persistPhysique(pp);
+        clientDaoDatabase.persistPhysique(pp);
         Assert.assertEquals(pp, clientDaoInMemory.findByNom("Blabla"));
         System.out.println("Test : Ajout d'un client de type PersonneMorale");
         PersonneMorale pm = new PersonneMorale();
         pm.setNom("Toto");
-        clientDaoInMemory.persist(pm);
+        clientDaoInMemory.persistMorale(pm);
         assertEquals(pm, clientDaoInMemory.findByNom("Toto"));
     }
 

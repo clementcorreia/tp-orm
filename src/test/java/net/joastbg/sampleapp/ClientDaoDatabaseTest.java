@@ -31,7 +31,7 @@ public class ClientDaoDatabaseTest {
     @Test
     public void testPersist(){
         PersonneMorale personneMorale = new PersonneMorale();
-        Long idPersonneMorale = clientDaoDatabase.persist(personneMorale);
+        Long idPersonneMorale = clientDaoDatabase.persistMorale(personneMorale);
         Client test = clientDaoDatabase.find(idPersonneMorale);
         Assert.assertNotNull("personneMorale null", test);
 

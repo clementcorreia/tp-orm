@@ -20,36 +20,29 @@ public class ClientDaoDatabase implements ClientDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    public Long persist(Client client){
+    @Override
+    public Long persistPhysique(PersonnePhysique client) {
         Session session = sessionFactory.getCurrentSession();
         Long returnID = (Long) session.save(client);
         return returnID;
     }
 
-    public PersonneMorale find(Long idPersonneMorale) {
+    @Override
+    public Long persistMorale(PersonneMorale client) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM PersonneMorale WHERE idClient=:idclient");
-        query.setLong("idclient", idPersonneMorale);
-        return (PersonneMorale) query.uniqueResult();
+        Long returnID = (Long) session.save(client);
+        return returnID;
     }
 
     @Override
-    public Client findByNom(String nom) {
-        return null;
-    }
-
-    public List<Client> findAll(){
+    public List<PersonneMorale> findAllMorale(){
         Session session = sessionFactory.getCurrentSession();
-        return  session.createQuery("from Client").list();
+        return session.createQuery("FROM PersonneMorale").list();
     }
 
     @Override
-    public List<PersonneMorale> findAllPersonneMorale() {
-        return null;
-    }
-
-    @Override
-    public List<PersonnePhysique> findAllPersonnePhysique() {
-        return null;
+    public List<PersonnePhysique> findAllPhysique(){
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("FROM PersonnePhysique").list();
     }
 }

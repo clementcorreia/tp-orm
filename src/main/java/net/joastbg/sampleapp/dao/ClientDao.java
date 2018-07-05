@@ -9,16 +9,12 @@ import java.util.List;
 
 public interface ClientDao {
 
-    public Long persist(Client client);
+    public Long persistPhysique(PersonnePhysique client);
 
-    public Client find(Long idClient);
+    public Long persistMorale(PersonneMorale client);
 
-    public Client findByNom(String nom);
+    public List<PersonneMorale> findAllMorale();
 
-    public List<Client> findAll();
-
-    public List<PersonneMorale> findAllPersonneMorale();
-
-    public List<PersonnePhysique> findAllPersonnePhysique();
+    public List<PersonnePhysique> findAllPhysique();
 
 }
