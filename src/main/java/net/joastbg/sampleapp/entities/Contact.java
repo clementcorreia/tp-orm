@@ -1,10 +1,11 @@
 package net.joastbg.sampleapp.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "CONTACT")
-public class Contact {
+public class Contact implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

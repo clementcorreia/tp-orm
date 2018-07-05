@@ -3,12 +3,13 @@ package net.joastbg.sampleapp.entities;
 import org.hibernate.annotations.Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @SequenceGenerator(name = "seq", initialValue = 1)
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Client {
+public abstract class Client implements Serializable {
 
     @Id
     @Column(name = "idClient")
