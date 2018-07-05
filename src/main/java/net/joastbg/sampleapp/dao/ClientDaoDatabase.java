@@ -20,7 +20,7 @@ public class ClientDaoDatabase implements ClientDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    public Long persist(PersonneMorale client){
+    public Long persist(Client client){
         Session session = sessionFactory.getCurrentSession();
         Long returnID = (Long) session.save(client);
         return returnID;

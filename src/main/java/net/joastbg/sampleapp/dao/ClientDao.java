@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ClientDao {
 
-    public Long persist(PersonneMorale client);
+    public Long persist(Client client);
 
     public Client find(Long idClient);
 

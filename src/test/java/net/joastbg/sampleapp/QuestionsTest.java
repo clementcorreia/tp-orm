@@ -32,7 +32,7 @@ import static org.junit.Assert.fail;
 public class QuestionsTest {
 
     @Autowired
-    ClientDaoDatabase clientDaoDatabase;
+    static ClientDaoDatabase clientDaoDatabase;
 
     static ClientDaoInMemory clientDaoInMemory;
 
@@ -41,6 +41,7 @@ public class QuestionsTest {
     @BeforeClass
     public static void setUp() {
         clientDaoInMemory = new ClientDaoInMemory();
+        clientDaoDatabase = new ClientDaoDatabase();
         clientExemple = new PersonnePhysique();
         clientExemple.setNom("Test Client");
     }
@@ -57,11 +58,12 @@ public class QuestionsTest {
     @Test
     public void q01_clientModel(){
         System.out.println("Test : Ajout d'un client de type PersonnePhysique");
-/*        PersonnePhysique pp = new PersonnePhysique();
+        PersonnePhysique pp = new PersonnePhysique();
         pp.setNom("Blabla");
         clientDaoInMemory.persist(pp);
+        clientDaoDatabase.persist(pp);
         Assert.assertEquals(pp, clientDaoInMemory.findByNom("Blabla"));
-        System.out.println("Test : Ajout d'un client de type PersonneMorale");*/
+        System.out.println("Test : Ajout d'un client de type PersonneMorale");
         PersonneMorale pm = new PersonneMorale();
         pm.setNom("Toto");
         clientDaoInMemory.persist(pm);

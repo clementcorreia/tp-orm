@@ -25,7 +25,7 @@ public class ClientDaoInMemory implements ClientDao {
     }
 
     @Override
-    public Long persist(PersonneMorale client) {
+    public Long persist(Client client) {
         clients.add(client);
         return Long.valueOf(1);
     }
