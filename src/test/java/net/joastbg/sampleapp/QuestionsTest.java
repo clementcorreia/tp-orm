@@ -294,7 +294,8 @@ public class QuestionsTest {
         try {
 
             for (Client c : listClient) {
-                if (c.getAssurances().get(0).getDateAnniversaire().compareTo(getDate("05/03/2018")) > 0) {
+                if ((c.getAssurances().get(0).getDateAnniversaire().compareTo(getDate("05/07/2018")) > 0) &&
+                        (c.getAssurances().get(0).getDateAnniversaire().compareTo(getDate("05/10/2018")) < 0) ) {
                     str.append(c.getNom()+"\n");
                 }
             }
