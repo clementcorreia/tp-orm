@@ -2,10 +2,11 @@ package net.joastbg.sampleapp.entities;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "COMPTE_BANCAIRE")
-public class CompteBancaire {
+public class CompteBancaire implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

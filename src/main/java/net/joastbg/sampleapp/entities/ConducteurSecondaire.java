@@ -1,9 +1,10 @@
 package net.joastbg.sampleapp.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
-public class ConducteurSecondaire {
+public class ConducteurSecondaire implements Serializable {
 
     @Id
     @Column(name = "idConducteurSecondaire")

@@ -4,6 +4,7 @@ package net.joastbg.sampleapp.entities;
 import org.hibernate.annotations.Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 @Entity
 @SequenceGenerator(name = "seq", initialValue = 1)
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Assurance {
+public abstract class Assurance implements Serializable {
 
     @Id
     @Column(name = "idAssurance")

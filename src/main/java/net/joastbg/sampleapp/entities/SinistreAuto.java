@@ -2,15 +2,11 @@ package net.joastbg.sampleapp.entities;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "SINISTRE_AUTO")
-@PrimaryKeyJoinColumn(name = "idSinistre")
-public class SinistreAuto extends Sinistre {
-
-    @OneToOne
-    @JoinColumn(name = "idSinistre")
-    private Sinistre sinistre;
+public class SinistreAuto extends Sinistre implements Serializable {
 
     @Column
     private String photo;
