@@ -13,6 +13,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -267,6 +268,13 @@ public class QuestionsTest {
 
     @Test
     public void q08_addSinistre(){
+        System.out.println("Test : Saisie du sinistre de son assurance");
+
+        Assurance assurance = clientExemple.getAssurances().get(0);
+
+
+
+
         fail("Not implemented yet");
     }
 
@@ -277,7 +285,26 @@ public class QuestionsTest {
 
     @Test
     public void q10_allClientAnniversaryDateLessThanThreeMonth(){
-        fail("Not implemented yet");
+        System.out.println("Test : Récupération client ayant date d'anniversaire dans moins de 3 mois");
+
+
+        ClientDaoDatabase clientDaoDatabase = new ClientDaoDatabase();
+        List<Client> listClient = clientDaoDatabase.findAll();
+        StringBuilder str = new StringBuilder();
+        try {
+
+            for (Client c : listClient) {
+                if (c.getAssurances().get(0).getDateAnniversaire().compareTo(getDate("05/03/2018")) > 0) {
+                    str.append(c.getNom()+"\n");
+                }
+            }
+
+            assertEquals(str, ); // TODO insérer la liste des clients qu'on est sencé récupérer
+
+        }catch(ParseException e){
+            e.printStackTrace();
+        }
+
     }
 
 }
