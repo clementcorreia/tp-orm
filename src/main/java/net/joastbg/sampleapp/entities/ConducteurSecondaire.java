@@ -4,12 +4,22 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
+@Table(name = "CONDUCTEUR_SECONDAIRE")
 public class ConducteurSecondaire implements Serializable {
 
     @Id
-    @Column(name = "idConducteurSecondaire")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq")
-    private Long id;
+    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long idConducteurSecondaire;
+
+    public long getIdConducteurSecondaire() {
+        return idConducteurSecondaire;
+    }
+
+    public void setIdConducteurSecondaire(long idConducteurSecondaire) {
+        this.idConducteurSecondaire = idConducteurSecondaire;
+    }
 
     @ManyToOne
     @JoinColumn(name = "idAssurance")
@@ -23,14 +33,6 @@ public class ConducteurSecondaire implements Serializable {
 
     @OneToMany(mappedBy = "conducteurSecondaire")
     private List<Contact> contacts;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public AssuranceAuto getAssurance() {
         return assurance;

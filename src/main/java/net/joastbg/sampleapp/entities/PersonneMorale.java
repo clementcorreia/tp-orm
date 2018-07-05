@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class PersonneMorale extends Client {
 
     @Id
-    public Long getId() {
-        return super.getId();
+    public long getIdClient() {
+        return super.getIdClient();
     }
 
     @Column

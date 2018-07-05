@@ -12,8 +12,8 @@ import java.util.List;
 public class AssuranceAuto extends Assurance {
 
     @Id
-    public Long getId() {
-        return super.getId();
+    public long getIdAssurance() {
+        return super.getIdAssurance();
     }
 
     @Column

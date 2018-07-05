@@ -10,14 +10,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@SequenceGenerator(name = "seq", initialValue = 1)
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Assurance implements Serializable {
 
     @Id
-    @Column(name = "idAssurance")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq")
-    private Long id;
+    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long idAssurance;
+
+    public long getIdAssurance() {
+        return idAssurance;
+    }
+
+    public void setIdAssurance(long idAssurance) {
+        this.idAssurance = idAssurance;
+    }
 
     @Column
     private String numero;
@@ -40,14 +47,6 @@ public abstract class Assurance implements Serializable {
 
     public Assurance() {
         this.echeances = new ArrayList<>();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNumero() {

@@ -10,12 +10,20 @@ public class CompteBancaire implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idCompteBancaire")
-    private Long id;
+    @Column
+    private long idCompteBancaire;
 
-    @ManyToOne
+    public long getIdCompteBancaire() {
+        return idCompteBancaire;
+    }
+
+    public void setIdCompteBancaire(long idCompteBancaire) {
+        this.idCompteBancaire = idCompteBancaire;
+    }
+
+    @ManyToOne(targetEntity = Client.class)
     @JoinColumn(name = "idClient")
-    private Client client;
+    private Client idClient;
 
     @Column(name="iban")
     private String iban;
@@ -26,20 +34,12 @@ public class CompteBancaire implements Serializable {
     @Column(name="swiftCode")
     private String swiftCode;
 
-    public void setId(Long id) {
-        this.id = id;
+    public Client getIdClient() {
+        return idClient;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
+    public void setIdClient(Client idClient) {
+        this.idClient = idClient;
     }
 
     public String getIban() {

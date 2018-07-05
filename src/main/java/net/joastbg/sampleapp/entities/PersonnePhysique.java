@@ -9,8 +9,8 @@ import java.time.LocalDate;
 public class PersonnePhysique extends Client {
 
     @Id
-    public Long getId() {
-        return super.getId();
+    public long getIdClient() {
+        return super.getIdClient();
     }
 
     @Column

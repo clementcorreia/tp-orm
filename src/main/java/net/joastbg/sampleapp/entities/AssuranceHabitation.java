@@ -10,8 +10,8 @@ import javax.persistence.*;
 public class AssuranceHabitation extends Assurance {
 
     @Id
-    public Long getId() {
-        return super.getId();
+    public long getIdAssurance() {
+        return super.getIdAssurance();
     }
 
     @Column

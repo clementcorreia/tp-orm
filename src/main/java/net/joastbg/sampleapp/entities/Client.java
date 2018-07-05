@@ -11,10 +11,18 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Client implements Serializable {
 
+    public long getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(long idClient) {
+        this.idClient = idClient;
+    }
+
+    @Column
     @Id
-    @Column(name = "idClient")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long idClient;
 
     @Column(name = "nom")
     private String nom;
@@ -31,14 +39,6 @@ public abstract class Client implements Serializable {
 
     @OneToMany(mappedBy = "client")
     private List<Contact> contacts;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNom() {
         return nom;

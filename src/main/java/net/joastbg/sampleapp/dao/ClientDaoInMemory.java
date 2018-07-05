@@ -8,7 +8,7 @@ import net.joastbg.sampleapp.entities.PersonnePhysique;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientDaoInMemory implements ClientDao {
+public class ClientDaoInMemory {
 
     public List<Client> clients = new ArrayList<>();
 
@@ -24,18 +24,17 @@ public class ClientDaoInMemory implements ClientDao {
         clients.add(pm);
     }
 
-    @Override
     public Long persist(Client client) {
         clients.add(client);
         return Long.valueOf(1);
     }
 
-    @Override
+
     public Client find(Long idClient) {
         return null;
     }
 
-    @Override
+
     public Client findByNom(String nom) {
         for(Client c : clients) {
             if(c.getNom().equals(nom)) {
@@ -45,12 +44,12 @@ public class ClientDaoInMemory implements ClientDao {
         return null;
     }
 
-    @Override
+
     public List<Client> findAll() {
         return clients;
     }
 
-    @Override
+
     public List<PersonneMorale> findAllPersonneMorale() {
         List<PersonneMorale> pms = new ArrayList<>();
         for(Client c : clients) {
@@ -61,7 +60,7 @@ public class ClientDaoInMemory implements ClientDao {
         return pms;
     }
 
-    @Override
+
     public List<PersonnePhysique> findAllPersonnePhysique() {
         List<PersonnePhysique> pps = new ArrayList<>();
         for(Client c : clients) {

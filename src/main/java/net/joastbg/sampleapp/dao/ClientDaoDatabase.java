@@ -20,36 +20,62 @@ public class ClientDaoDatabase implements ClientDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    public Long persist(Client client){
+    @Override
+    public Long persistPhysique(PersonnePhysique client) {
         Session session = sessionFactory.getCurrentSession();
         Long returnID = (Long) session.save(client);
         return returnID;
     }
 
-    public Client find(Long idPersonneMorale) {
+    @Override
+    public Long persistMorale(PersonneMorale client) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("SELECT * FROM Client WHERE idClient=?");
-        query.setLong(1, idPersonneMorale);
-        return (Client) query.uniqueResult();
+        Long returnID = (Long) session.save(client);
+        return returnID;
     }
 
     @Override
-    public Client findByNom(String nom) {
-        return null;
-    }
-
-    public List<Client> findAll(){
+    public List<PersonneMorale> findAllMorale(){
         Session session = sessionFactory.getCurrentSession();
-        return  session.createQuery("from Client").list();
+        return session.createQuery("FROM PersonneMorale").list();
     }
 
     @Override
-    public List<PersonneMorale> findAllPersonneMorale() {
-        return null;
+    public List<PersonnePhysique> findAllPhysique(){
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("FROM PersonnePhysique").list();
     }
 
     @Override
-    public List<PersonnePhysique> findAllPersonnePhysique() {
-        return null;
+    public PersonnePhysique findPhysique(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("FROM PersonnePhysique WHERE idClient=:idClient");
+        query.setLong("idClient", id);
+        return (PersonnePhysique) query.uniqueResult();
     }
+
+    @Override
+    public PersonneMorale findMorale(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("FROM PersonneMorale WHERE idClient=:idClient");
+        query.setLong("idClient", id);
+        return (PersonneMorale) query.uniqueResult();
+    }
+
+    @Override
+    public PersonnePhysique findByNomPhysique(String nom) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("FROM PersonnePhysique WHERE nom=:nom");
+        query.setString("nom", nom);
+        return (PersonnePhysique) query.uniqueResult();
+    }
+
+    @Override
+    public PersonneMorale findByNomMorale(String nom) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("FROM PersonneMorale WHERE nom=:nom");
+        query.setString("nom", nom);
+        return (PersonneMorale) query.uniqueResult();
+    }
+
 }
