@@ -13,9 +13,9 @@ import java.sql.Date;
 public class Sinistre implements Serializable {
 
     @Id
-    @Column
+    @Column(name = "idSinistre")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idSinistre;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "idClient")
@@ -30,4 +30,7 @@ public class Sinistre implements Serializable {
     @Column
     private String description;
 
+    public Long getId() {
+        return id;
+    }
 }

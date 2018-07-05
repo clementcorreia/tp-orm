@@ -4,13 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PERSONNE_MORALE")
-@PrimaryKeyJoinColumn(name = "idClient")
 public class PersonneMorale extends Client {
 
     @Id
-    @OneToOne
-    @JoinColumn(name = "idClient")
-    private Client client;
+    public Long getId() {
+        return super.getId();
+    }
 
     @Column
     private String siren;

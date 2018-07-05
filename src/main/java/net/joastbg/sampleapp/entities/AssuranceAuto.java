@@ -9,12 +9,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "ASSURANCE_AUTO")
-@PrimaryKeyJoinColumn(name = "idAssurance")
 public class AssuranceAuto extends Assurance {
 
-    @OneToOne
-    @JoinColumn(name = "idAssurance")
-    private Assurance assurance;
+    @Id
+    public Long getId() {
+        return super.getId();
+    }
 
     @Column
     private String immatriculation;
@@ -27,14 +27,6 @@ public class AssuranceAuto extends Assurance {
 
     public AssuranceAuto() {
         this.conducteursSecondaires = new ArrayList<>();
-    }
-
-    public Assurance getAssurance() {
-        return assurance;
-    }
-
-    public void setAssurance(Assurance assurance) {
-        this.assurance = assurance;
     }
 
     public String getImmatriculation() {

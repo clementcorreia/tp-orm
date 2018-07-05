@@ -299,7 +299,7 @@ public class QuestionsTest {
                 }
             }
 
-            assertEquals(str, ); // TODO insérer la liste des clients qu'on est sencé récupérer
+            //assertEquals(str, ); // TODO insérer la liste des clients qu'on est sencé récupérer
 
         }catch(ParseException e){
             e.printStackTrace();

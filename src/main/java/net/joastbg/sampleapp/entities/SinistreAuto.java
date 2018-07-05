@@ -11,4 +11,9 @@ public class SinistreAuto extends Sinistre implements Serializable {
     @Column
     private String photo;
 
+    @Id
+    public Long getId() {
+        return super.getId();
+    }
+
 }

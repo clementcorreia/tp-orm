@@ -7,13 +7,13 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@SequenceGenerator(name = "seq", initialValue = 1)
+@Table(name = "CLIENT")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Client implements Serializable {
 
     @Id
     @Column(name = "idClient")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "nom")
