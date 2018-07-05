@@ -19,13 +19,13 @@ public class Contact implements Serializable {
     @Column(name = "valeurContact")
     private String valeur;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "idClient")
-    private Client client;
+    private Client client;*/
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "idConducteurSecondaire")
-    private ConducteurSecondaire conducteurSecondaire;
+    private ConducteurSecondaire conducteurSecondaire;*/
 
     public Long getId() {
         return id;

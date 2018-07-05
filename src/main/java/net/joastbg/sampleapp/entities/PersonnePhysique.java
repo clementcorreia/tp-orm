@@ -6,13 +6,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "PERSONNE_PHYSIQUE")
-@PrimaryKeyJoinColumn(name = "idClient")
 public class PersonnePhysique extends Client {
 
-    @Id
-    @OneToOne
-    @JoinColumn(name = "idClient")
-    private Client client;
 
     @Column
     private String prenom;

@@ -13,9 +13,9 @@ public class CompteBancaire implements Serializable {
     @Column(name="idCompteBancaire")
     private Long id;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "idClient")
-    private Client client;
+    private Client client;*/
 
     @Column(name="iban")
     private String iban;
@@ -34,13 +34,13 @@ public class CompteBancaire implements Serializable {
         return id;
     }
 
-    public Client getClient() {
+/*    public Client getClient() {
         return client;
     }
 
     public void setClient(Client client) {
         this.client = client;
-    }
+    }*/
 
     public String getIban() {
         return iban;
